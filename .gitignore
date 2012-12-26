@@ -1,3 +1,17 @@
+# Qt per-platform settings
+*.pro.user
+
+# Makefiles
+Makefile*
+
+# Debug symbols
+*.pdb
+
+# Compiled binaries
+debug/*
+release/*
+
 # OS-specific indices
 .DS_Store
 Thumbs.db
+
