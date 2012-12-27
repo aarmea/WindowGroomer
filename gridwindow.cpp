@@ -43,8 +43,7 @@ void GridWindow::shortcutPressed()
 
 void GridWindow::initWindow()
 {
-  // gridSelect = new GridWidget();
-  gridSelect = new QLabel("Hello World!");
+  gridSelect = new GridWidget(this);
   QVBoxLayout *layout = new QVBoxLayout();
   layout->addWidget(gridSelect);
   setLayout(layout);

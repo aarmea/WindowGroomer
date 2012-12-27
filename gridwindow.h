@@ -15,9 +15,7 @@
 #include <QCloseEvent>
 #include <QVBoxLayout>
 
-// Put this back when everything else is tested
-// #include "gridwidget.h"
-#include <QLabel>
+#include "gridwidget.h"
 
 class GridWindow : public QDialog
 {
@@ -44,7 +42,7 @@ private:
   QxtGlobalShortcut *shortcut;
 
   // Grid positioning window
-  QLabel *gridSelect;
+  GridWidget *gridSelect;
   int sqArea;
 
   // Tray icon and context menus

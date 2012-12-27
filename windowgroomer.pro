@@ -6,11 +6,13 @@ QXT += \
   gui
 
 HEADERS = \
-  gridwindow.h
+  gridwindow.h \
+  gridwidget.h
 
 SOURCES = \
   main.cpp \
-  gridwindow.cpp
+  gridwindow.cpp \
+  gridwidget.cpp
 
 RESOURCES = windowgroomer.qrc
 
