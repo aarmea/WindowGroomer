@@ -12,5 +12,6 @@ SOURCES = \
   main.cpp \
   gridwindow.cpp
 
-RESOURCES = \
-  windowgroomer.qrc
+RESOURCES = windowgroomer.qrc
+
+win32:RC_FILE = windowgroomer.rc
