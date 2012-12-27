@@ -1,6 +1,7 @@
 #include "gridwindow.h"
 
-GridWindow::GridWindow()
+GridWindow::GridWindow(QWidget *parent) :
+  QDialog(parent), sqArea(256)
 {
   initWindow();
   initActions();
@@ -8,6 +9,16 @@ GridWindow::GridWindow()
 
   connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
     this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
+}
+
+QSize GridWindow::sizeHint()
+{
+  // Calculate size from resolution of current screen
+  QDesktopWidget *screens = qApp->desktop();
+  QRect curScreenRes = screens->screenGeometry(this);
+  qreal aspect = qreal(curScreenRes.width()) / curScreenRes.height();
+  qreal sqrAspect = sqrt(aspect);
+  return QSize(sqArea*sqrAspect, sqArea/sqrAspect);
 }
 
 void GridWindow::closeEvent(QCloseEvent *event)
@@ -72,6 +83,9 @@ void GridWindow::initTray()
 
 void GridWindow::showWindow()
 {
+  QWidget::setFixedSize(sizeHint());
+
   show();
+  raise();
   activateWindow();
 }

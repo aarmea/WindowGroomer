@@ -4,7 +4,10 @@
 #include <QApplication>
 #include <QSystemTrayIcon>
 #include <QxtGlobalShortcut>
+#include <QWidget>
+#include <QDesktopWidget>
 
+#include <QSize>
 #include <QKeySequence>
 #include <QDialog>
 #include <QMenu>
@@ -20,7 +23,9 @@ class GridWindow : public QDialog
 {
   Q_OBJECT
 public:
-  GridWindow();
+  explicit GridWindow(QWidget *parent = 0);
+
+  QSize sizeHint();
 
 protected:
   void closeEvent(QCloseEvent *event);
@@ -39,8 +44,8 @@ private:
   QxtGlobalShortcut *shortcut;
 
   // Grid positioning window
-  // GridWidget *gridSelect;
   QLabel *gridSelect;
+  int sqArea;
 
   // Tray icon and context menus
   QSystemTrayIcon *trayIcon;
