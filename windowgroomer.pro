@@ -1,3 +1,10 @@
+CONFIG += \
+  qxt
+
+QXT += \
+  core \
+  gui
+
 HEADERS = \
   gridwindow.h
 

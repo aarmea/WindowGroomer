@@ -3,6 +3,9 @@
 
 #include <QApplication>
 #include <QSystemTrayIcon>
+#include <QxtGlobalShortcut>
+
+#include <QKeySequence>
 #include <QDialog>
 #include <QMenu>
 #include <QAction>
@@ -24,11 +27,16 @@ protected:
 
 private slots:
   void iconActivated(QSystemTrayIcon::ActivationReason reason);
+  void shortcutPressed();
 
 private:
   void initWindow();
   void initActions();
   void initTray();
+
+  void showWindow();
+
+  QxtGlobalShortcut *shortcut;
 
   // Grid positioning window
   // GridWidget *gridSelect;

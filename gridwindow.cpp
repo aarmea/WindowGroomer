@@ -21,8 +21,13 @@ void GridWindow::closeEvent(QCloseEvent *event)
 void GridWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {
   if (reason == QSystemTrayIcon::DoubleClick) {
-    show();
+    showWindow();
   }
+}
+
+void GridWindow::shortcutPressed()
+{
+  showWindow();
 }
 
 void GridWindow::initWindow()
@@ -44,6 +49,11 @@ void GridWindow::initActions()
 
   quitAction = new QAction(tr("&Quit"), this);
   connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+
+  shortcut = new QxtGlobalShortcut(this);
+  connect(shortcut, SIGNAL(activated()), this, SLOT(shortcutPressed()));
+  // TODO: make shortcut configurable, warn if shortcut is not available
+  shortcut->setShortcut(QKeySequence("Ctrl+Shift+F12"));
 }
 
 void GridWindow::initTray()
@@ -58,4 +68,10 @@ void GridWindow::initTray()
   trayIcon->setContextMenu(trayMenu);
   trayIcon->setIcon(QIcon(":/images/icon.png"));
   trayIcon->show();
+}
+
+void GridWindow::showWindow()
+{
+  show();
+  activateWindow();
 }
