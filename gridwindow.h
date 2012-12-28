@@ -12,7 +12,6 @@
 #include <QDialog>
 #include <QMenu>
 #include <QAction>
-#include <QCloseEvent>
 #include <QVBoxLayout>
 
 #include "gridwidget.h"
@@ -24,9 +23,6 @@ public:
   explicit GridWindow(QWidget *parent = 0);
 
   QSize sizeHint();
-
-protected:
-  void closeEvent(QCloseEvent *event);
 
 private slots:
   void iconActivated(QSystemTrayIcon::ActivationReason reason);

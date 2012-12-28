@@ -21,14 +21,6 @@ QSize GridWindow::sizeHint()
   return QSize(sqArea*sqrAspect, sqArea/sqrAspect);
 }
 
-void GridWindow::closeEvent(QCloseEvent *event)
-{
-  if (trayIcon->isVisible()) {
-    hide();
-    event->ignore();
-  }
-}
-
 void GridWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {
   if (reason == QSystemTrayIcon::DoubleClick) {
