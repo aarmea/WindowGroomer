@@ -6,6 +6,8 @@
 #include <QPainter>
 #include <QRect>
 #include <QColor>
+#include <QMouseEvent>
+#include <QPoint>
 
 class GridWidget : public QWidget
 {
@@ -23,6 +25,11 @@ protected:
   void paintCells(QPainter &painter, QRect cells,
     CellStatus status = Inactive);
 
+  QPoint findCellFromPos(QPoint pos);
+  void mouseMoveEvent(QMouseEvent *event);
+  void mousePressEvent(QMouseEvent *event);
+  void mouseReleaseEvent(QMouseEvent *event);
+
 private:
   int cols;
   int rows;
@@ -32,6 +39,11 @@ private:
   QColor activeCellColor;
 
   QRect activeCells;
+
+  bool mouseDown;
+  QPoint mouseDownCell;
 };
+
+QRect normalize(QRect rect);
 
 #endif

@@ -1,7 +1,7 @@
 #include "gridwidget.h"
 
 GridWidget::GridWidget(QWidget *parent) :
-  QWidget(parent),
+  QWidget(parent), mouseDown(false),
   cols(4), rows(3),
   backColor(Qt::black),
   inactiveCellColor(Qt::darkGray),
@@ -48,4 +48,58 @@ void GridWidget::paintCells(QPainter &painter, QRect cells, CellStatus status)
       painter.fillRect(cell, color);
     }
   }
+}
+
+QPoint GridWidget::findCellFromPos(QPoint pos)
+{
+  int cellWidth = width() / cols;
+  int cellHeight = height() / rows;
+  return QPoint(pos.x()/cellWidth, pos.y()/cellHeight);
+}
+
+void GridWidget::mouseMoveEvent(QMouseEvent *event)
+{
+  if (mouseDown) {
+    QPoint currentCell = findCellFromPos(event->pos());
+    activeCells = normalize(QRect(mouseDownCell, currentCell));
+    update();
+  }
+}
+
+void GridWidget::mousePressEvent(QMouseEvent *event)
+{
+  mouseDown = true;
+  mouseDownCell = findCellFromPos(event->pos());
+}
+
+void GridWidget::mouseReleaseEvent(QMouseEvent *event)
+{
+  mouseDown = false;
+  mouseDownCell = QPoint();
+  activeCells = QRect();
+  update();
+}
+
+// QRect::normalized() does not correctly normalize QRects that have height or
+// width of -1
+QRect normalize(QRect rect)
+{
+  int x1 = rect.left();
+  int y1 = rect.top();
+  int x2 = rect.left() + rect.width();
+  int y2 = rect.top() + rect.height();
+
+  int temp = 0;
+  if (x2 <= x1) {
+    temp = x1;
+    x1 = x2 - 1;
+    x2 = temp + 1;
+  }
+  if (y2 <= y1) {
+    temp = y1;
+    y1 = y2 - 1;
+    y2 = temp + 1;
+  }
+
+  return QRect(x1, y1, x2-x1, y2-y1);
 }
