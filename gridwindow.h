@@ -14,6 +14,9 @@
 #include <QAction>
 #include <QVBoxLayout>
 
+#include <QMessageBox>
+#include <QString>
+
 #include "gridwidget.h"
 #include "nativewindow.h"
 
@@ -31,6 +34,8 @@ public slots:
 private slots:
   void iconActivated(QSystemTrayIcon::ActivationReason reason);
   void shortcutPressed();
+
+  void showAbout();
 
 private:
   void initWindow();

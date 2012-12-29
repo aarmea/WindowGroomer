@@ -49,6 +49,32 @@ void GridWindow::shortcutPressed()
   showWindow();
 }
 
+void GridWindow::showAbout()
+{
+  QMessageBox about;
+  QString aboutString;
+  aboutString.sprintf(
+    "%s %s\n"
+    "%s\n"
+    "Copyright (C) %s %s\n"
+    "\n"
+    "This program is free software: you can redistribute it and/or modify "
+    "it under the terms of the GNU General Public License as published by "
+    "the Free Software Foundation, either version 3 of the License, or "
+    "(at your option) any later version.\n"
+    "\n"
+    "This program is distributed in the hope that it will be useful, "
+    "but WITHOUT ANY WARRANTY; without even the implied warranty of "
+    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the "
+    "GNU General Public License for more details.\n"
+    "\n"
+    "You should have received a copy of the GNU General Public License "
+    "along with this program.  If not, see <http://www.gnu.org/licenses/>.",
+    APP_PRODUCT, APP_VERSION, APP_DESCRIPTION, APP_COPYRIGHT, APP_COMPANY);
+  about.setText(aboutString);
+  about.exec();
+}
+
 void GridWindow::initWindow()
 {
   gridSelect = new GridWidget(this);
@@ -65,7 +91,7 @@ void GridWindow::initActions()
   // TODO: make a preferences popup and connect the action to the popup
 
   aboutAction = new QAction(tr("&About"), this);
-  // TODO: make an about popup and connect the action to the popup
+  connect(aboutAction, SIGNAL(triggered()), this, SLOT(showAbout()));
 
   quitAction = new QAction(tr("&Quit"), this);
   connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
@@ -79,7 +105,7 @@ void GridWindow::initActions()
 void GridWindow::initTray()
 {
   trayMenu = new QMenu(this);
-  trayMenu->addAction(prefsAction);
+  // trayMenu->addAction(prefsAction);
   trayMenu->addAction(aboutAction);
   trayMenu->addSeparator();
   trayMenu->addAction(quitAction);
