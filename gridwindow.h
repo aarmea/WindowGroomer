@@ -14,6 +14,8 @@
 #include <QAction>
 #include <QVBoxLayout>
 
+#include <QMessageBox>
+
 #include "gridwidget.h"
 #include "nativewindow.h"
 

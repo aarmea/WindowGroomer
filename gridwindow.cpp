@@ -28,6 +28,20 @@ void GridWindow::receiveGrid(const QRect &grid)
   QRect availArea = screens->availableGeometry(this);
   QRect newSize = getAreaFromCells(grid, gridSize, availArea);
 
+  QMessageBox dialog(this);
+  QString string;
+  string.sprintf(
+    "Grid size: %dx%d\n"
+    "Selected: (%d, %d) %dx%d\n"
+    "Available area on monitor: %dx%d (%d, %d)\n"
+    "New window position: (%d, %d) %dx%d",
+    gridSize.width(), gridSize.height(),
+    grid.x(), grid.y(), grid.width(), grid.height(),
+    availArea.width(), availArea.height(), availArea.x(), availArea.y(),
+    newSize.x(), newSize.y(), newSize.width(), newSize.height());
+  dialog.setText(string);
+  dialog.exec();
+
   // Resizing twice fixes positioning on a different monitor
   window.resize(newSize);
   if (window.resize(newSize)) {
