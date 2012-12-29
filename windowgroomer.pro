@@ -7,12 +7,14 @@ QXT += \
 
 HEADERS = \
   gridwindow.h \
-  gridwidget.h
+  gridwidget.h \
+  nativewindow.h
 
 SOURCES = \
   main.cpp \
   gridwindow.cpp \
-  gridwidget.cpp
+  gridwidget.cpp \
+  nativewindow.cpp
 
 RESOURCES = windowgroomer.qrc
 

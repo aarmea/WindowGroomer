@@ -15,6 +15,7 @@
 #include <QVBoxLayout>
 
 #include "gridwidget.h"
+#include "nativewindow.h"
 
 class GridWindow : public QDialog
 {
@@ -23,6 +24,9 @@ public:
   explicit GridWindow(QWidget *parent = 0);
 
   QSize sizeHint();
+
+public slots:
+  void receiveGrid(const QRect &grid);
 
 private slots:
   void iconActivated(QSystemTrayIcon::ActivationReason reason);
@@ -40,6 +44,7 @@ private:
   // Grid positioning window
   GridWidget *gridSelect;
   int sqArea;
+  NativeWindow window;
 
   // Tray icon and context menus
   QSystemTrayIcon *trayIcon;
@@ -48,5 +53,7 @@ private:
   QAction *aboutAction;
   QAction *quitAction;
 };
+
+QRect getAreaFromCells(QRect cells, QSize gridSize, QRect availArea);
 
 #endif

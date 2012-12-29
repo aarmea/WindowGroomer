@@ -8,6 +8,11 @@ GridWidget::GridWidget(QWidget *parent) :
   activeCellColor(Qt::lightGray)
 {}
 
+QSize GridWidget::gridSize()
+{
+  return QSize(cols, rows); 
+}
+
 void GridWidget::resizeGrid(int newCols, int newRows)
 {
   cols = newCols;
@@ -74,6 +79,7 @@ void GridWidget::mousePressEvent(QMouseEvent *event)
 
 void GridWidget::mouseReleaseEvent(QMouseEvent *event)
 {
+  emit sendGrid(activeCells);
   mouseDown = false;
   mouseDownCell = QPoint();
   activeCells = QRect();

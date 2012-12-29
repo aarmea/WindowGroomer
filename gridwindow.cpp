@@ -21,6 +21,20 @@ QSize GridWindow::sizeHint()
   return QSize(sqArea*sqrAspect, sqArea/sqrAspect);
 }
 
+void GridWindow::receiveGrid(const QRect &grid)
+{
+  QSize gridSize = gridSelect->gridSize();
+  QDesktopWidget *screens = qApp->desktop();
+  QRect availArea = screens->availableGeometry(this);
+  QRect newSize = getAreaFromCells(grid, gridSize, availArea);
+
+  if (window.resize(newSize)) {
+    accept();
+  } else {
+    reject();
+  }
+}
+
 void GridWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {
   if (reason == QSystemTrayIcon::DoubleClick) {
@@ -39,6 +53,8 @@ void GridWindow::initWindow()
   QVBoxLayout *layout = new QVBoxLayout();
   layout->addWidget(gridSelect);
   setLayout(layout);
+
+  connect(gridSelect, SIGNAL(sendGrid(QRect)), this, SLOT(receiveGrid(QRect)));
 }
 
 void GridWindow::initActions()
@@ -74,9 +90,20 @@ void GridWindow::initTray()
 
 void GridWindow::showWindow()
 {
-  QWidget::setFixedSize(sizeHint());
+  window.getFront();
+  setWindowTitle(window.title());
 
+  QWidget::setFixedSize(sizeHint());
   show();
   raise();
   activateWindow();
+}
+
+QRect getAreaFromCells(QRect grid, QSize gridSize, QRect availArea)
+{
+  qreal cellWidth = qreal(availArea.width()) / gridSize.width();
+  qreal cellHeight = qreal(availArea.height()) / gridSize.height();
+  return QRect(availArea.x() + qRound(grid.x()*cellWidth),
+    availArea.y() + qRound(grid.y()*cellWidth),
+    qRound(grid.width()*cellWidth), qRound(grid.height()*cellHeight));
 }
