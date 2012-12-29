@@ -10,7 +10,7 @@ GridWidget::GridWidget(QWidget *parent) :
 
 QSize GridWidget::gridSize()
 {
-  return QSize(cols, rows); 
+  return QSize(cols, rows);
 }
 
 void GridWidget::resizeGrid(int newCols, int newRows)
@@ -66,7 +66,8 @@ void GridWidget::mouseMoveEvent(QMouseEvent *event)
 {
   if (mouseDown) {
     QPoint currentCell = findCellFromPos(event->pos());
-    activeCells = normalize(QRect(mouseDownCell, currentCell));
+    activeCells = normalize(
+      QRect(mouseDownCell, currentCell).intersected(QRect(0, 0, cols, rows)));
     update();
   }
 }

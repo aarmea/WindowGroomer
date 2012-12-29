@@ -28,6 +28,8 @@ void GridWindow::receiveGrid(const QRect &grid)
   QRect availArea = screens->availableGeometry(this);
   QRect newSize = getAreaFromCells(grid, gridSize, availArea);
 
+  // Resizing twice fixes positioning on a different monitor
+  window.resize(newSize);
   if (window.resize(newSize)) {
     accept();
   } else {
@@ -103,7 +105,9 @@ QRect getAreaFromCells(QRect grid, QSize gridSize, QRect availArea)
 {
   qreal cellWidth = qreal(availArea.width()) / gridSize.width();
   qreal cellHeight = qreal(availArea.height()) / gridSize.height();
-  return QRect(availArea.x() + qRound(grid.x()*cellWidth),
-    availArea.y() + qRound(grid.y()*cellWidth),
-    qRound(grid.width()*cellWidth), qRound(grid.height()*cellHeight));
+  int x = availArea.x() + qRound(grid.x()*cellWidth);
+  int y = availArea.y() + qRound(grid.y()*cellHeight);
+  int width = qRound(grid.width()*cellWidth);
+  int height = qRound(grid.height()*cellHeight);
+  return QRect(x, y, width, height);
 }
