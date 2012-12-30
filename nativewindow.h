@@ -13,6 +13,8 @@ We can't use QxtWindowSystem because we need Mac support and window resizing.
 #include <QString>
 #include <QRect>
 
+#define CSTRING_LEN 256
+
 #ifdef Q_WS_WIN
 // Windows-specific includes
 #include <Windows.h>
