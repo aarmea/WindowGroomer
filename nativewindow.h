@@ -4,7 +4,7 @@ A cross-platform way to represent and modify native windows.
 We can't use QxtWindowSystem because we need Mac support and window resizing.
 */
 
-#ifndef NATIVEWINODW_H
+#ifndef NATIVEWINDOW_H
 #define NATIVEWINDOW_H
 
 // For OS-specific macros
