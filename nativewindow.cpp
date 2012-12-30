@@ -17,7 +17,7 @@ void NativeWindow::getFront()
 QString NativeWindow::title()
 {
   // Windows-style string
-  LPTSTR buffer = new wchar_t[256];
+  LPTSTR buffer = new TCHAR[256];
   GetWindowText(window, buffer, 256);
   QString title = QString::fromUtf16(buffer);
   delete[] buffer;
