@@ -13,5 +13,8 @@ release/*
 
 # OS-specific indices
 .DS_Store
-Thumbs.db
+Thumbs.d
+
+# Sublime Text workspace
+*.sublime-workspace
 
