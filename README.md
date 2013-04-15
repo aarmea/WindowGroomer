@@ -6,10 +6,12 @@ open-source (GPL) clone of the now-defunct [dfgbt Window Manager][dfgbt].
 
 [dfgbt]: http://www.youtube.com/watch?v=NM8OMcvTk9U "dfgbt Window Manager"
 
-Binary Releases
+Binary releases
 ---------------
 
-###[v0.1.0](http://www.albertarmea.com/releases/WindowGroomer/WindowGroomer-win-0.1.0.zip)
+### v0.1.0
+
+[Download](http://www.albertarmea.com/releases/WindowGroomer/WindowGroomer-win-0.1.0.zip)
 
 * Proof of concept with basic window resizing and multiple monitor support.
 * Requires Microsoft Windows XP, Vista, 7, or 8 (x86 and x86-64 only).
