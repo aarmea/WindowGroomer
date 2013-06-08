@@ -19,8 +19,9 @@ HEADERS = \
 SOURCES = \
   main.cpp \
   gridwindow.cpp \
-  gridwidget.cpp \
-  nativewindow.cpp
+  gridwidget.cpp
+
+win32:SOURCES += nativewindow-win.cpp
 
 RESOURCES = windowgroomer.qrc
 
