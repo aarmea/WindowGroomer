@@ -15,19 +15,19 @@ We can't use QxtWindowSystem because we need Mac support and window resizing.
 
 #define CSTRING_LEN 256
 
-#ifdef Q_WS_WIN
 // Windows-specific includes
+#ifdef Q_WS_WIN
 #include <Windows.h>
 #pragma comment(lib, "User32.lib")
 typedef HWND WindowId;
 #endif
 
-#ifdef Q_WS_MAC
 // Mac-specific includes
+#ifdef Q_WS_MAC
 #endif
 
-#ifdef Q_WS_X11
 // Linux/Unix-specific includes
+#ifdef Q_WS_X11
 #endif
 
 class NativeWindow {
