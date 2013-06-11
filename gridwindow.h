@@ -17,6 +17,8 @@
 #include <QMessageBox>
 #include <QString>
 
+#include <QtCore/qmath.h>
+
 #include "gridwidget.h"
 #include "nativewindow.h"
 

@@ -17,7 +17,7 @@ QSize GridWindow::sizeHint()
   QDesktopWidget *screens = qApp->desktop();
   QRect curScreenRes = screens->screenGeometry(this);
   qreal aspect = qreal(curScreenRes.width()) / curScreenRes.height();
-  qreal sqrAspect = sqrt(aspect);
+  qreal sqrAspect = qSqrt(aspect);
   return QSize(sqArea*sqrAspect, sqArea/sqrAspect);
 }
 
