@@ -10,6 +10,9 @@ Makefile*
 # Compiled binaries
 debug/*
 release/*
+*.o
+moc_*
+qrc_*
 
 # OS-specific indices
 .DS_Store
