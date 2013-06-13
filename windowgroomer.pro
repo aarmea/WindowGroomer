@@ -22,6 +22,7 @@ SOURCES = \
   gridwidget.cpp
 
 win32:SOURCES += nativewindow-win.cpp
+unix:!mac:SOURCES += nativewindow-x11.cpp
 
 RESOURCES = windowgroomer.qrc
 

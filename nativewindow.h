@@ -28,6 +28,12 @@ typedef HWND WindowId;
 
 // Linux/Unix-specific includes
 #ifdef Q_WS_X11
+#include <QX11Info>
+#include <X11/Xlib.h>
+struct WindowId {
+  Window handle;
+  Display *display;
+};
 #endif
 
 class NativeWindow {
