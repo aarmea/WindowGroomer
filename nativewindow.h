@@ -47,6 +47,12 @@ public:
 
 private:
   WindowId window;
+
+  #ifdef Q_WS_X11
+  static int titleBarHeight;
+  static int sideBorderWidth;
+  static int bottomBorderHeight;
+  #endif
 };
 
 #endif

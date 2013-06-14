@@ -1,5 +1,12 @@
 #include "nativewindow.h"
 
+// Hard-coded sizes of window decorations because there is no window manager-
+// agnostic way of getting them with X11
+// TOOD: add this to the preferences
+int NativeWindow::titleBarHeight = 27;
+int NativeWindow::sideBorderWidth = 1;
+int NativeWindow::bottomBorderHeight = 1;
+
 NativeWindow::NativeWindow()
 {
   // Default constructor uses the current foreground window
@@ -42,7 +49,13 @@ QString NativeWindow::title()
 
 bool NativeWindow::resize(QRect size)
 {
+  // X11 positions its windows excluding decorations (title bar and borders),
+  // so we need to account for that manually
+  int xPos = size.x() + sideBorderWidth;
+  int yPos = size.y();
+  int width = size.width() - 2*sideBorderWidth;
+  int height = size.height() - titleBarHeight - bottomBorderHeight;
   // XMoveResizeWindow returns 0 on success and nonzero on failure
   return XMoveResizeWindow(window.display, window.handle,
-    size.x(), size.y(), size.width(), size.height());
+    xPos, yPos, width, height);
 }
