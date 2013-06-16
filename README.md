@@ -10,12 +10,14 @@ Binary releases
 ---------------
 
 ### v0.1.0
-
-[Download](http://www.albertarmea.com/releases/WindowGroomer/WindowGroomer-win-0.1.0.zip)
-
 * Proof of concept with basic window resizing and multiple monitor support.
-* Requires Microsoft Windows XP, Vista, 7, or 8 (x86 and x86-64 only).
 * Keyboard shortcut (Ctrl+Shift+F12) and grid size (4x3) cannot be changed.
+
+#### [Windows executable](http://www.albertarmea.com/releases/WindowGroomer/WindowGroomer-win-0.1.0.zip)
+* Requires Microsoft Windows XP, Vista, 7, or 8 (x86 and x86-64 only).
+
+#### Linux users must compile from source.
+* Requires Linux with X11. (Only tested on Ubuntu 12.04.)
 
 Building from source
 --------------------
@@ -61,6 +63,27 @@ work.
 For release mode, replace `nmake` with `nmake release`. You may need to copy
 some Qt and Qxt *.dll files from their install directories to the
 WindowGroomer directory for it to run.
+
+### Linux
+On Linux, WindowGroomer uses Qt 4.8.4 (or later within 4.x) and libqxt 0.6.2
+(or later).
+
+#### Setup
+Install the required libraries using your preferred package manager.
+
+* On Ubuntu (and other Debian-based distributions), run:
+
+        sudo apt-get install qt4-dev-tools libqxt-*
+
+#### Compiling
+1. Clone WindowGroomer into a directory.
+2. Open a shell and do the following:
+
+        cd [cloned-source]
+        qmake
+        make
+
+For release mode, replace `make` with `make release`.
 
 Copyright
 ---------
