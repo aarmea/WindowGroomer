@@ -21,3 +21,5 @@ Thumbs.d
 # Sublime Text workspace
 *.sublime-workspace
 
+# Vim swap files
+*.swp
