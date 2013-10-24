@@ -44,6 +44,8 @@ public:
   QString title();
 
   bool resize(QRect size);
+  bool maximize();
+  bool unmaximize();
 
 private:
   WindowId window;

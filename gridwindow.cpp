@@ -28,6 +28,19 @@ void GridWindow::receiveGrid(const QRect &grid)
   QRect availArea = screens->availableGeometry(this);
   QRect newSize = getAreaFromCells(grid, gridSize, availArea);
 
+  // Target size is maximized, so maximize the window
+  if (grid.size() == gridSize) {
+    if (window.maximize()) {
+      accept();
+    } else {
+      reject();
+    }
+    return;
+  }
+
+  // Otherwise unmaximize the window
+  window.unmaximize();
+
   // Resizing twice fixes positioning on a different monitor
   window.resize(newSize);
   if (window.resize(newSize)) {
