@@ -38,6 +38,7 @@ private slots:
   void shortcutPressed();
 
   void showAbout();
+  void showPrefs();
 
 private:
   void initWindow();
@@ -51,11 +52,15 @@ private:
   // Grid positioning window
   GridWidget *gridSelect;
   int sqArea;
+
+  // TODO(aarmea): Keep track of windows positioned with WindowGroomer and
+  // what windows they're next to.
   NativeWindow window;
 
   // Tray icon and context menus
   QSystemTrayIcon *trayIcon;
   QMenu *trayMenu;
+  // TODO(aarmea): Create a preferences menu
   QAction *prefsAction;
   QAction *aboutAction;
   QAction *quitAction;

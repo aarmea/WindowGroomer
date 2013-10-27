@@ -75,6 +75,11 @@ void GridWindow::showAbout()
   about.exec();
 }
 
+void GridWindow::showPrefs()
+{
+  // TODO
+}
+
 void GridWindow::initWindow()
 {
   gridSelect = new GridWidget(this);
@@ -88,7 +93,7 @@ void GridWindow::initWindow()
 void GridWindow::initActions()
 {
   prefsAction = new QAction(tr("&Preferences"), this);
-  // TODO: make a preferences popup and connect the action to the popup
+  connect(prefsAction, SIGNAL(triggered()), this, SLOT(showPrefs()));
 
   aboutAction = new QAction(tr("&About"), this);
   connect(aboutAction, SIGNAL(triggered()), this, SLOT(showAbout()));
@@ -105,7 +110,7 @@ void GridWindow::initActions()
 void GridWindow::initTray()
 {
   trayMenu = new QMenu(this);
-  // trayMenu->addAction(prefsAction);
+  trayMenu->addAction(prefsAction);
   trayMenu->addAction(aboutAction);
   trayMenu->addSeparator();
   trayMenu->addAction(quitAction);
