@@ -78,7 +78,7 @@ void GridWindow::showAbout()
 void GridWindow::initWindow()
 {
   gridSelect = new GridWidget(this);
-  QVBoxLayout *layout = new QVBoxLayout();
+  QVBoxLayout *layout = new QVBoxLayout(this);
   layout->addWidget(gridSelect);
   setLayout(layout);
 
