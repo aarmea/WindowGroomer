@@ -12,6 +12,7 @@
 #include <QVBoxLayout>
 #include <QFormLayout>
 #include <QSpinBox>
+#include <QLineEdit>
 
 class SettingsWindow : public QDialog
 {
@@ -38,10 +39,9 @@ private:
   QTabWidget *tabs;
 
   // General tab fields
+  QLineEdit *hotkey;
   QSpinBox *verticalDivisions;
   QSpinBox *horizontalDivisions;
-
-  // TODO(aarmea): Make the keyboard shortcut configurable
 };
 
 #endif

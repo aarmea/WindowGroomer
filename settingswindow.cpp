@@ -29,6 +29,8 @@ void SettingsWindow::initWindow()
   // General tab
   QWidget *generalTab = new QWidget(this);
   QFormLayout *generalPage = new QFormLayout(generalTab);
+  hotkey = new QLineEdit(this);
+  generalPage->addRow(tr("Global hotkey"), hotkey);
   verticalDivisions = new QSpinBox(generalTab);
   verticalDivisions->setRange(1, 32);
   generalPage->addRow(tr("Vertical divisions"), verticalDivisions);
@@ -52,6 +54,7 @@ void SettingsWindow::accept()
   QDialog::accept();
 
   // Save the settings from the GUI to the QSettings object
+  settings->setValue("hotkey", hotkey->text());
   settings->setValue("grid/xcells", verticalDivisions->value());
   settings->setValue("grid/ycells", horizontalDivisions->value());
 
@@ -64,6 +67,7 @@ void SettingsWindow::showEvent(QShowEvent *event)
   QDialog::showEvent(event);
 
   // Load the settings from the QSettings object to the GUI
+  hotkey->setText(settings->value("hotkey").toString());
   verticalDivisions->setValue(settings->value("grid/xcells").toInt());
   horizontalDivisions->setValue(settings->value("grid/ycells").toInt());
 }

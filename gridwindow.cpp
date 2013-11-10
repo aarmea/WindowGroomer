@@ -42,6 +42,7 @@ void GridWindow::receiveGrid(const QRect &grid)
 void GridWindow::loadSettings()
 {
   // Load settings from the QSettings object into the relevant widgets
+  shortcut->setShortcut(QKeySequence(settings->value("hotkey").toString()));
   gridSelect->resizeGrid(
       settings->value("grid/xcells").toInt(),
       settings->value("grid/ycells").toInt());
@@ -113,8 +114,6 @@ void GridWindow::initActions()
 
   shortcut = new QxtGlobalShortcut(this);
   connect(shortcut, SIGNAL(activated()), this, SLOT(shortcutPressed()));
-  // TODO: make shortcut configurable, warn if shortcut is not available
-  shortcut->setShortcut(QKeySequence("Ctrl+Shift+F12"));
 }
 
 void GridWindow::initTray()
@@ -136,6 +135,9 @@ void GridWindow::initSettings()
   settings = new QSettings(APP_COMPANY, APP_PRODUCT);
 
   // Set defaults for unset settings
+  if (settings->value("hotkey").isNull()) {
+    settings->setValue("hotkey", "Ctrl+Shift+F12");
+  }
   if (settings->value("grid/xcells").isNull()) {
     settings->setValue("grid/xcells", 4);
   }
