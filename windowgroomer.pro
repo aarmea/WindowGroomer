@@ -1,4 +1,4 @@
-VERSION = 0.1.0
+VERSION = 0.1.1
 QMAKE_TARGET_COMPANY = "Albert Armea"
 QMAKE_TARGET_PRODUCT = "WindowGroomer"
 QMAKE_TARGET_DESCRIPTION = "Position application windows on a grid."
