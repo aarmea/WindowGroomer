@@ -9,6 +9,8 @@ GridWindow::GridWindow(QWidget *parent) :
 
   connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
     this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
+
+  settingsWindow = new SettingsWindow(this);
 }
 
 QSize GridWindow::sizeHint()
@@ -77,7 +79,7 @@ void GridWindow::showAbout()
 
 void GridWindow::showPrefs()
 {
-  // TODO
+  settingsWindow->show();
 }
 
 void GridWindow::initWindow()

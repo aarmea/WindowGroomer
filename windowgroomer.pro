@@ -14,12 +14,14 @@ QXT += \
 HEADERS = \
   gridwindow.h \
   gridwidget.h \
-  nativewindow.h
+  nativewindow.h \
+  settingswindow.h
 
 SOURCES = \
   main.cpp \
   gridwindow.cpp \
-  gridwidget.cpp
+  gridwidget.cpp \
+  settingswindow.cpp
 
 win32:SOURCES += nativewindow-win.cpp
 unix:!mac:SOURCES += nativewindow-x11.cpp

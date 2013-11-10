@@ -21,6 +21,7 @@
 
 #include "gridwidget.h"
 #include "nativewindow.h"
+#include "settingswindow.h"
 
 class GridWindow : public QDialog
 {
@@ -57,10 +58,12 @@ private:
   // what windows they're next to.
   NativeWindow window;
 
+  // Settings window
+  SettingsWindow *settingsWindow;
+
   // Tray icon and context menus
   QSystemTrayIcon *trayIcon;
   QMenu *trayMenu;
-  // TODO(aarmea): Create a preferences menu
   QAction *prefsAction;
   QAction *aboutAction;
   QAction *quitAction;
