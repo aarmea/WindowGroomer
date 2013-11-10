@@ -1,6 +1,7 @@
 #include "settingswindow.h"
 
-SettingsWindow::SettingsWindow(QWidget *parent) : QDialog(parent)
+SettingsWindow::SettingsWindow(QSettings *newSettings, QWidget *parent) :
+  settings(newSettings), QDialog(parent)
 {
   initWindow();
 
@@ -44,4 +45,25 @@ void SettingsWindow::initWindow()
   layout->addWidget(tabs);
   layout->addWidget(buttonBox);
   setLayout(layout);
+}
+
+void SettingsWindow::accept()
+{
+  QDialog::accept();
+
+  // Save the settings from the GUI to the QSettings object
+  settings->setValue("grid/xcells", verticalDivisions->value());
+  settings->setValue("grid/ycells", horizontalDivisions->value());
+
+  // Emit a signal that the app can receive when settings have been changed
+  emit settingsChanged();
+}
+
+void SettingsWindow::showEvent(QShowEvent *event)
+{
+  QDialog::showEvent(event);
+
+  // Load the settings from the QSettings object to the GUI
+  verticalDivisions->setValue(settings->value("grid/xcells").toInt());
+  horizontalDivisions->setValue(settings->value("grid/ycells").toInt());
 }

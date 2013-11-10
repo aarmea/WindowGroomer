@@ -10,7 +10,7 @@ GridWindow::GridWindow(QWidget *parent) :
   connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
     this, SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 
-  settingsWindow = new SettingsWindow(this);
+  initSettings();
 }
 
 QSize GridWindow::sizeHint()
@@ -37,6 +37,14 @@ void GridWindow::receiveGrid(const QRect &grid)
   } else {
     reject();
   }
+}
+
+void GridWindow::loadSettings()
+{
+  // Load settings from the QSettings object into the relevant widgets
+  gridSelect->resizeGrid(
+      settings->value("grid/xcells").toInt(),
+      settings->value("grid/ycells").toInt());
 }
 
 void GridWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
@@ -121,6 +129,24 @@ void GridWindow::initTray()
   trayIcon->setContextMenu(trayMenu);
   trayIcon->setIcon(QIcon(":/images/icon.png"));
   trayIcon->show();
+}
+
+void GridWindow::initSettings()
+{
+  settings = new QSettings(APP_COMPANY, APP_PRODUCT);
+
+  // Set defaults for unset settings
+  if (settings->value("grid/xcells").isNull()) {
+    settings->setValue("grid/xcells", 4);
+  }
+  if (settings->value("grid/ycells").isNull()) {
+    settings->setValue("grid/ycells", 3);
+  }
+
+  loadSettings();
+  settingsWindow = new SettingsWindow(settings, this);
+  connect(settingsWindow, SIGNAL(settingsChanged()),
+      this, SLOT(loadSettings()));
 }
 
 void GridWindow::showWindow()

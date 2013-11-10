@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QWidget>
+#include <QSettings>
 
 #include <QSize>
 #include <QTabWidget>
@@ -16,24 +17,31 @@ class SettingsWindow : public QDialog
 {
   Q_OBJECT
 public:
-  explicit SettingsWindow(QWidget *parent = 0);
+  explicit SettingsWindow(QSettings *newSettings, QWidget *parent = 0);
 
   QSize sizeHint();
 
 public slots:
-  // TODO
+  void accept();
 
-private slots:
-  // TODO
+protected slots:
+  void showEvent(QShowEvent *event);
+
+signals:
+  void settingsChanged();
 
 private:
   void initWindow();
+
+  QSettings *settings;
 
   QTabWidget *tabs;
 
   // General tab fields
   QSpinBox *verticalDivisions;
   QSpinBox *horizontalDivisions;
+
+  // TODO(aarmea): Make the keyboard shortcut configurable
 };
 
 #endif

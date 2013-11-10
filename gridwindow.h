@@ -6,6 +6,7 @@
 #include <QxtGlobalShortcut>
 #include <QWidget>
 #include <QDesktopWidget>
+#include <QSettings>
 
 #include <QSize>
 #include <QKeySequence>
@@ -33,6 +34,7 @@ public:
 
 public slots:
   void receiveGrid(const QRect &grid);
+  void loadSettings();
 
 private slots:
   void iconActivated(QSystemTrayIcon::ActivationReason reason);
@@ -45,6 +47,7 @@ private:
   void initWindow();
   void initActions();
   void initTray();
+  void initSettings();
 
   void showWindow();
 
@@ -59,6 +62,7 @@ private:
   NativeWindow window;
 
   // Settings window
+  QSettings *settings;
   SettingsWindow *settingsWindow;
 
   // Tray icon and context menus
