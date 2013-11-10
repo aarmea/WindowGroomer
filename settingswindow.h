@@ -40,8 +40,8 @@ private:
 
   // General tab fields
   QLineEdit *hotkey;
-  QSpinBox *verticalDivisions;
-  QSpinBox *horizontalDivisions;
+  QSpinBox *grid_xcells;
+  QSpinBox *grid_ycells;
 };
 
 #endif

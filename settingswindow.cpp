@@ -31,12 +31,12 @@ void SettingsWindow::initWindow()
   QFormLayout *generalPage = new QFormLayout(generalTab);
   hotkey = new QLineEdit(this);
   generalPage->addRow(tr("Global hotkey"), hotkey);
-  verticalDivisions = new QSpinBox(generalTab);
-  verticalDivisions->setRange(1, 32);
-  generalPage->addRow(tr("Vertical divisions"), verticalDivisions);
-  horizontalDivisions = new QSpinBox(generalTab);
-  horizontalDivisions->setRange(1, 32);
-  generalPage->addRow(tr("Horizontal divisions"), horizontalDivisions);
+  grid_xcells = new QSpinBox(generalTab);
+  grid_xcells->setRange(1, 32);
+  generalPage->addRow(tr("Vertical divisions"), grid_xcells);
+  grid_ycells = new QSpinBox(generalTab);
+  grid_ycells->setRange(1, 32);
+  generalPage->addRow(tr("Horizontal divisions"), grid_ycells);
 
   // TODO(aarmea): More tabs for other functionality
 
@@ -55,8 +55,8 @@ void SettingsWindow::accept()
 
   // Save the settings from the GUI to the QSettings object
   settings->setValue("hotkey", hotkey->text());
-  settings->setValue("grid/xcells", verticalDivisions->value());
-  settings->setValue("grid/ycells", horizontalDivisions->value());
+  settings->setValue("grid/xcells", grid_xcells->value());
+  settings->setValue("grid/ycells", grid_ycells->value());
 
   // Emit a signal that the app can receive when settings have been changed
   emit settingsChanged();
@@ -68,6 +68,6 @@ void SettingsWindow::showEvent(QShowEvent *event)
 
   // Load the settings from the QSettings object to the GUI
   hotkey->setText(settings->value("hotkey").toString());
-  verticalDivisions->setValue(settings->value("grid/xcells").toInt());
-  horizontalDivisions->setValue(settings->value("grid/ycells").toInt());
+  grid_xcells->setValue(settings->value("grid/xcells").toInt());
+  grid_ycells->setValue(settings->value("grid/ycells").toInt());
 }
