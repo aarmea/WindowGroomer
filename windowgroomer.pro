@@ -4,6 +4,9 @@ QMAKE_TARGET_PRODUCT = "WindowGroomer"
 QMAKE_TARGET_DESCRIPTION = "Position application windows on a grid."
 QMAKE_TARGET_COPYRIGHT = "2012-2013"
 
+# Qt does not include the directory the project file is in by default
+INCLUDEPATH += .
+
 CONFIG += \
   qxt
 
@@ -12,19 +15,19 @@ QXT += \
   gui
 
 HEADERS = \
-  gridwindow.h \
-  gridwidget.h \
-  nativewindow.h \
-  settingswindow.h
+  "gui/gridwindow.h" \
+  "gui/gridwidget.h" \
+  "gui/settingswindow.h" \
+  "wm/nativewindow.h"
 
 SOURCES = \
-  main.cpp \
-  gridwindow.cpp \
-  gridwidget.cpp \
-  settingswindow.cpp
+  "main.cpp" \
+  "gui/gridwindow.cpp" \
+  "gui/gridwidget.cpp" \
+  "gui/settingswindow.cpp"
 
-win32:SOURCES += nativewindow-win.cpp
-unix:!mac:SOURCES += nativewindow-x11.cpp
+win32:SOURCES += "wm/nativewindow-win.cpp"
+unix:!mac:SOURCES += "wm/nativewindow-x11.cpp"
 
 RESOURCES = windowgroomer.qrc
 

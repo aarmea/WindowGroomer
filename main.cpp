@@ -1,6 +1,6 @@
 #include <QApplication>
 
-#include "gridwindow.h"
+#include "gui/gridwindow.h"
 
 int main(int argc, char *argv[])
 {

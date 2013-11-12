@@ -1,4 +1,4 @@
-#include "gridwidget.h"
+#include "gui/gridwidget.h"
 
 GridWidget::GridWidget(QWidget *parent) :
   QWidget(parent), mouseDown(false),

@@ -95,6 +95,15 @@ Install the required libraries using your preferred package manager.
 
 For release mode, replace `make` with `make release`.
 
+Notes for contributors
+----------------------
+
+### Directory structure
+
+* `gui`: Anything that is directly displayed on the screen, like the positioning
+  and settings windows.
+* `wm`: Classes that directly relate to window management, like `NativeWindow`.
+
 Copyright
 ---------
 

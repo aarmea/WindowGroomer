@@ -20,9 +20,9 @@
 
 #include <QtCore/qmath.h>
 
-#include "gridwidget.h"
-#include "nativewindow.h"
-#include "settingswindow.h"
+#include "gui/gridwidget.h"
+#include "gui/settingswindow.h"
+#include "wm/nativewindow.h"
 
 class GridWindow : public QDialog
 {

@@ -1,4 +1,4 @@
-#include "settingswindow.h"
+#include "gui/settingswindow.h"
 
 SettingsWindow::SettingsWindow(QSettings *newSettings, QWidget *parent) :
   settings(newSettings), QDialog(parent)

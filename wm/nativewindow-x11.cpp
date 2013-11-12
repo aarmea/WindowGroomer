@@ -1,4 +1,4 @@
-#include "nativewindow.h"
+#include "wm/nativewindow.h"
 
 // Hard-coded sizes of window decorations because there is no window manager-
 // agnostic way of getting them with X11

@@ -1,4 +1,4 @@
-#include "gridwindow.h"
+#include "gui/gridwindow.h"
 
 GridWindow::GridWindow(QWidget *parent) :
   QDialog(parent), sqArea(256)
