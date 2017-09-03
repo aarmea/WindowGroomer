@@ -9,25 +9,13 @@ open-source (GPL) clone of the now-defunct [dfgbt Window Manager][dfgbt].
 Binary releases
 ---------------
 
-### v0.1.1
+### [v0.1.1](https://github.com/aarmea/WindowGroomer/releases/tag/v0.1.1)
 * Added a preferences dialog to allow changing the keyboard shortcut and grid
   size.
 
-#### [Windows executable](http://www.albertarmea.com/releases/WindowGroomer/WindowGroomer-win-0.1.1.zip)
-* Requires Microsoft Windows XP, Vista, 7, or 8 (x86 and x86-64 only).
-
-#### Linux users must compile from source.
-* Requires Linux with X11. (Only tested on Ubuntu 12.04.)
-
-### v0.1.0
+### [v0.1.0](https://github.com/aarmea/WindowGroomer/releases/tag/v0.1.0)
 * Proof of concept with basic window resizing and multiple monitor support.
 * Keyboard shortcut (Ctrl+Shift+F12) and grid size (4x3) cannot be changed.
-
-#### [Windows executable](http://www.albertarmea.com/releases/WindowGroomer/WindowGroomer-win-0.1.0.zip)
-* Requires Microsoft Windows XP, Vista, 7, or 8 (x86 and x86-64 only).
-
-#### Linux users must compile from source.
-* Requires Linux with X11. (Only tested on Ubuntu 12.04.)
 
 Building from source
 --------------------
